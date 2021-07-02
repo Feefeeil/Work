@@ -1,0 +1,90 @@
+
+<html>
+
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+  </head>
+
+  <body>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo" style="padding-left: 20px;">Super-Hero adder </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="https://singularity-studios.notafeefeeil.repl.co/">Visit my friend and I's web page!</a></li>
+          <li><a href="https://downloadmodules.notafeefeeil.repl.co/">DownloadModules</a></li>
+          <li><a href="https://obbasdwiss.repl.co/">Obbasdwiss</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Iron Man</span>
+            <p>Iron man is a regular human that made his own suit! He has multiple suits, and some of them can appear from thin air!</p>
+          </div>
+        </div>
+      </div> <!-- end of col -->
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Thor</span>
+            <p>Thor, the god of thunder wields a powerful hammer that can smash his foes into pieces. He can also electrocute his opponents. </p>
+          </div>
+        </div>
+      </div> <!-- end of col -->
+    </div> <!-- end of 1st row -->
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Spider Man</span>
+            <p>Spider man has web shooters, which allow him to swing from web to web and using his sticky webs to trap his enemies.</p>
+          </div>
+        </div>
+      </div> <!-- end of col -->
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Captain America</span>
+            <p>Captain america has a shield that he can throw at his opponents and protect himself from attacks.</p>
+          </div>
+        </div>
+      </div> <!-- end of col -->
+    </div> <!-- end of 2nd row -->
+
+    <p style="text-align: center; font-size: 24px;">Feel Free to add your favourite superhero to the list!</p>
+
+    <input id="heroname">
+    <button onclick="addHero()">Add</button>
+    <div id="herolist"></div>
+
+  </body>
+
+  <script>
+    // global variable
+    var myheros = [];
+
+    function addHero() {
+      var iHandle = document.getElementById('heroname');
+      var dHandle = document.getElementById('herolist');
+      var myHTML = '<ul>';
+      myheros.push(iHandle.value);
+      for (i=0;i<myheros.length;i++) {
+        myHTML = myHTML + '<li>' + myheros[i] + '</li>';
+      }
+      var myHTML = myHTML + '</ul>';
+      console.log(myHTML);
+      dHandle.innerHTML = myHTML;
+    }
+
+  </script>
+
+</html>
