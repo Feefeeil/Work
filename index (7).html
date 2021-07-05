@@ -1,0 +1,88 @@
+<html>
+
+<head>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+
+	</script>
+
+	<script src='covid.json'>
+
+	</script>
+</head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper" style="text-align: center;">
+        <a href="#" class="brand-logo" style="position: relative; left: -50px;">Covid Deaths by Country</a>
+      </div>
+    </nav>
+    <div style="text-align: left; float: left; padding: 50px;">
+      <button onclick="buildListdeaths()">See covid deaths</button>
+      <div id='output'></div>
+    </div>
+    <div style="text-align: center; float: right; padding: 50px; padding-left: 350px;">
+      <button onclick="buildListcases()">See covid comfirmed cases</button>
+      <div id='output'></div>
+    </div>
+    <div style="text-align: right; float: right; padding: 50px;">
+      <button onclick="buildListrecovered()">See covid recovered</button>
+      <div id='output'></div>
+    </div>
+
+    <body>
+  <script>
+
+    //buildList();
+
+    // build list from file, push to div
+    function buildListdeaths() {
+      var dHandle = document.getElementById('output');
+      var myHTML = '<ul>';
+
+      coviddata.data.sort(function (a, b) {
+        return b.dead - a.dead;
+      });
+
+      for (i=0; i<coviddata.data.length; i++) {
+        myHTML = myHTML + "<li>" + coviddata.data[i].location + " - " + coviddata.data[i].dead + "</li>";
+      }
+      myHTML = myHTML + "</ul>"
+      dHandle.innerHTML = myHTML;
+    }
+
+    function buildListcases() {
+      var dHandle = document.getElementById('output');
+      var myHTML = '<ul>';
+
+      coviddata.data.sort(function (a, b) {
+        return b.confirmed - a.confirmed;
+      });
+
+      for (i=0; i<coviddata.data.length; i++) {
+        myHTML = myHTML + "<li>" + coviddata.data[i].location + " - " + coviddata.data[i].confirmed + "</li>";
+      }
+      myHTML = myHTML + "</ul>"
+      dHandle.innerHTML = myHTML;
+    }
+
+    function buildListrecovered() {
+      var dHandle = document.getElementById('output');
+      var myHTML = '<ul>';
+
+      coviddata.data.sort(function (a, b) {
+        return b.recovered - a.recovered;
+      });
+
+      for (i=0; i<coviddata.data.length; i++) {
+        myHTML = myHTML + "<li>" + coviddata.data[i].location + " - " + coviddata.data[i].recovered + "</li>";
+      }
+      myHTML = myHTML + "</ul>"
+      dHandle.innerHTML = myHTML;
+    }
+
+  </script>
+</html>
