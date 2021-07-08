@@ -7,8 +7,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   </head>
 
   <body>
@@ -24,7 +22,7 @@
       </div>
     </nav>
 
-    <div class="row">
+<div class="row">
       <div class="col s12 m6">
         <div class="card">
           <div class="card-content">
@@ -36,8 +34,8 @@
       <div class="col s12 m6">
         <div class="card">
           <div class="card-content">
-            <span class="card-title">Map</span>
-            <div id="map" style="width: 100%; height: 63%;"></div>
+            <span class="card-title">Covid Cases</span>
+            <p>(graph goes here)</p>
           </div>
         </div>
       </div> <!-- end of col -->
@@ -53,15 +51,7 @@
             </div>
           </div> <!-- end of col -->
         </div> <!-- end of 1st row -->
-        <div class="col s12 m6">
-            <div class="card">
-              <div class="card-content">
-                <span class="card-title">Card</span>
-                <p>(circle graph goes here)</p>
-              </div>
-            </div>
-          </div> <!-- end of col -->
-        </div> <!-- end of 1st row -->
+
   </body>
 
  <script>
@@ -77,7 +67,7 @@
     // build list from file, push to div
     function buildList(response) {
       var dHandle = document.getElementById('output');
-      var myHTML = "<ul class='collection'>";
+      var myHTML = '<ul>';
 
       //coviddata.data.sort(function (a, b) {
       response.sort(function (a, b) {
@@ -87,24 +77,10 @@
       //for (i=0; i<coviddata.data.length; i++) {
       //  myHTML = myHTML + "<li>" + coviddata.data[i].location + " - " + coviddata.data[i].dead + "</li>";
       for (i=0; i<10; i++) {
-        myHTML = myHTML + "<li class='collection-item'>" + response[i].location + "<span class='badge'>" + response[i].dead + "</li>";
+        myHTML = myHTML + "<li>" + response[i].location + " - " + response[i].dead + "</li>";
       }
       myHTML = myHTML + "</ul>"
       dHandle.innerHTML = myHTML;
-    }
-
-    mapIt();
-
-    function mapIt() {
-      var map = L.map('map').setView([51.505, -0.09], 13);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-
-      L.marker([51.5, -0.09]).addTo(map)
-          .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-          .openPopup();
     }
 
   </script>
